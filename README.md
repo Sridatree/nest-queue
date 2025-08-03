@@ -17,16 +17,16 @@ It lets you:
 
 ```mermaid
 flowchart LR
-    subgraph NestJS App
-      direction TB
-      A[Config] -->|env| All
-      B[Workflow APIs] --> C[Coordinator]
-      C --> D[Queue (FlowProducer)]
-      D --> Redis
-      E[Worker] --> Redis
-      E -->|status updates| DB[(Postgres)]
-      B -. reads .-> DB
-    end
+  subgraph NestJS_App
+    direction TB
+    A[Config] -->|"env"| ALL[Modules]
+    B[Workflow_APIs] --> C[Coordinator]
+    C --> D["Queue (FlowProducer)"]
+    D --> R[(Redis)]
+    E[Worker] --> R
+    E -->|"status updates"| DB[(Postgres)]
+    B -. "reads" .-> DB
+  end
 ```
 
 ### 1. `config`
@@ -141,6 +141,3 @@ npm run start:dev         # Nest hot-reload server
 ```
 
 ---
-
-## License
-MIT
